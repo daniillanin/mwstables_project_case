@@ -11,7 +11,7 @@
   "dependencies": {
     "@primeuix/themes": "^2.0.3",
     "dotenv": "^17.4.0",
-    "firebase": "^12.10.0",
+    "firebase": "^10.0.0",
     "firebaseui": "^6.1.0",
     "openai": "^6.33.0",
     "primeicons": "^7.0.0",
