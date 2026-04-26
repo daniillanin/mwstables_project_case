@@ -1,0 +1,26 @@
+import { fileURLToPath, URL } from 'node:url'
+
+import { defineConfig } from 'vite'
+import vue from '@vitejs/plugin-vue'
+import vueDevTools from 'vite-plugin-vue-devtools'
+
+export default defineConfig({
+  plugins: [
+    vue(),
+    vueDevTools(),
+  ],
+  resolve: {
+    alias: {
+      '@': fileURLToPath(new URL('./src', import.meta.url))
+    },
+  },
+  server: {
+    proxy: {
+      '/mws-api': {
+        target: 'https://gpt.mwsapis.ru',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/mws-api/, '') //удаляется из URL часть адреса mws-api-org/ при отправкке запроса 
+      }
+    },
+  }
+})
